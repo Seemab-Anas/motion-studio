@@ -76,7 +76,7 @@ export default function Hero() {
       </div>
 
       {/* Arrows */}
-      <div className="absolute bottom-6 right-6 flex space-x-3">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 transform flex space-x-3">
         <button
           onClick={prevSlide}
           className="p-3 rounded-full backdrop-blur-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition"

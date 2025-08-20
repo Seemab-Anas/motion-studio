@@ -97,19 +97,20 @@ export default function Services() {
           {/* IT Services Card */}
           <div className="bg-white rounded-2xl p-8 shadow-lg">
             <div className="flex items-center mb-6">
-              <Server className="w-8 h-8 text-blue-600 mr-3" />
-              <h3 className="text-2xl font-bold text-gray-900">IT Services</h3>
+              <Globe className="w-8 h-8 text-blue-600 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-900">Global IT Support</h3>
             </div>
             
             <p className="text-gray-700 mb-6 leading-relaxed">
-              We provide on-demand and managed IT support services around the globe, 24/7. Our highly skilled engineers 
-              offer unlimited on-site support with professional advice and services according to industry best practices.
+              We are focused on providing on-demand and managed IT support services around the globe and around the clock. 
+              Our highly technical and skilled team of engineers is available 24/7 to visit client sites and fix issues. 
+              We provide unlimited on-site user support, with certified experts delivering IT services aligned with industry best practices and business needs.
             </p>
 
             <div className="mb-6">
               <h4 className="font-semibold text-gray-900 mb-3">Supported Platforms:</h4>
               <div className="flex flex-wrap gap-2">
-                {["HP", "IBM", "DELL", "CISCO", "FUJITSU", "NETAPP", "EMC", "Oracle/Sun"].map((platform, index) => (
+                {["HP", "IBM", "DELL", "CISCO", "FUJITSU", "NETAPP", "EMC", "Oracle/Sun", "Hitachi"].map((platform, index) => (
                   <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                     {platform}
                   </span>
@@ -120,21 +121,21 @@ export default function Services() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Wrench className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-700">Maintenance Support & IMAC Services</span>
+                <span className="text-gray-700">Maintenance Support & IMAC (Install, Move, Add, Change)</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Monitor className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-700">Desktop, Servers & Storage Solutions</span>
+                <span className="text-gray-700">Smart Hands on Desktops, Servers & Storage</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Users className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-700">Smart Hands Support & Site Survey</span>
+                <HardDrive className="w-5 h-5 text-blue-600" />
+                <span className="text-gray-700">Tape Libraries, Site Surveys & On-site Assistance</span>
               </div>
             </div>
 
             <div className="mt-6 p-4 bg-blue-50 rounded-lg">
               <p className="text-sm text-blue-800">
-                <strong>Global Reach:</strong> Head Office in London (UK) with 2+ years of experience serving businesses worldwide.
+                <strong>Global Reach:</strong> Head Office in London (UK). In business for the past 2 years, delivering 24/7 global IT support.
               </p>
             </div>
           </div>
@@ -185,16 +186,7 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="mt-12 bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Business Operations?</h3>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Get comprehensive IT support and financial management in one partnership. Experience professional excellence with certified experts.
-          </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
-            Get Started Today
-          </button>
-        </div>
+        
       </div>
     </div>
   );
