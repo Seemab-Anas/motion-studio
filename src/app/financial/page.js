@@ -20,7 +20,7 @@ export default function Page() {
           src="/banner/fb-solutions.jpg"
           alt="Financial & Business Solutions banner"
           fill
-          className="object-cover"
+          className="object-cover object-left"
           priority
         />
 
@@ -144,7 +144,7 @@ export default function Page() {
 function ServiceCard({ Icon, title, text }) {
   return (
     <div className="rounded-[14px] bg-gray-50 p-4 shadow-sm hover:shadow-md transition flex gap-4">
-      <div className="flex-none bg-[#045494]/10 p-3 rounded-full">
+      <div className="flex-none bg-[#045494]/10 w-12 h-12 rounded-full flex items-center justify-center">
         <Icon className="w-6 h-6 text-[#045494]" />
       </div>
       <div>
