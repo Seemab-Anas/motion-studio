@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        {/* Google Analytics */}
+        {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6LSQ2K35X9"
           strategy="afterInteractive"
@@ -50,6 +50,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
+        {/* App Components */}
         <Navbar />
         {children}
         <WhatsAppChat />
