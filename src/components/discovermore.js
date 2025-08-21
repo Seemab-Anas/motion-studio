@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ShieldCheck, Globe2, Clock } from "lucide-react";
 
 export default function AboutBanner() {
@@ -58,9 +59,16 @@ export default function AboutBanner() {
         <div className="max-w-7xl mx-auto">
           <div className="mt-4 bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl p-8 text-center text-white">
             <h3 className="text-2xl font-bold mb-4">Discover How We’ve Saved Clients £900k in IT Costs & Tax Penalties</h3>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
+            <Link
+              href="/contactUs"
+              aria-label="Get Started Today - Contact Us"
+              className="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold cursor-pointer
+                         hover:bg-blue-50 hover:shadow-lg hover:-translate-y-0.5
+                         focus:outline-none focus:ring-2 focus:ring-white/60 focus:ring-offset-2 focus:ring-offset-blue-600
+                         transition-all duration-200 ease-out"
+            >
               Get Started Today
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -96,12 +96,8 @@ export default function ContactForm() {
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <h2 className="text-4xl md:text-5xl font-extralight leading-tight">
-            Let's talk how to increase <br /> your product value
+            How can we serve you ?
           </h2>
-          <p className="mt-4 text-slate-300 max-w-2xl">
-            Move your product ahead of the competition by delivering an
-            exceptional digital experience.
-          </p>
         </div>
 
         <form
@@ -177,7 +173,7 @@ export default function ContactForm() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Describe the services you looking for/challenges u facing"
+                placeholder="Describe the services you looking for/challenges you facing"
                 rows={5}
                 className="w-full bg-transparent border rounded-xl py-4 pl-14 pr-4 outline-none border-white/10 placeholder:text-slate-500 resize-none"
               />

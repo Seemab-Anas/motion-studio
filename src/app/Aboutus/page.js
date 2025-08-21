@@ -71,7 +71,7 @@ const page = () => {
       </header>
 
       {/* Who We Are Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="pt-8 md:pt-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
