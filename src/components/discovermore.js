@@ -57,7 +57,7 @@ export default function AboutBanner() {
       <div className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
           <div className="mt-4 bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl p-8 text-center text-white">
-            <h3 className="text-2xl font-bold mb-4">Discover How We’ve Saved Clients £2.3M+ in IT Costs & Tax Penalties</h3>
+            <h3 className="text-2xl font-bold mb-4">Discover How We’ve Saved Clients £900k in IT Costs & Tax Penalties</h3>
             <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
               Get Started Today
             </button>

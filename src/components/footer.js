@@ -107,7 +107,7 @@ export default function Footer() {
                 <div>
                   <div className="text-xs text-white/80">Address</div>
                   <address className="not-italic mt-1 text-sm">
-                    82 James Carter Road
+                    82 JAMES CARTER ROAD MILDENHALL UNITED KINGDOM IP28 7DE
                   </address>
                 </div>
               </div>

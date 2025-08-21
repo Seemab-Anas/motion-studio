@@ -177,7 +177,7 @@ export default function ContactForm() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Describe your product and challenge"
+                placeholder="Describe the services you looking for/challenges u facing"
                 rows={5}
                 className="w-full bg-transparent border rounded-xl py-4 pl-14 pr-4 outline-none border-white/10 placeholder:text-slate-500 resize-none"
               />

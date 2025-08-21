@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import CompaniesScroller from "@/components/companiesscroller";
 import {
   Clock,
   Server,
@@ -12,6 +13,57 @@ import {
 } from "lucide-react";
 
 export default function Page() {
+  const servicesData = [
+    {
+      id: "01",
+      title: "On-Demand IT Support",
+      desc: "Instant, 24/7 IT assistance for businesses to resolve issues quickly and efficiently",
+      img: "/it-service/on-demand-support.jpg"
+    },
+    {
+      id: "02", 
+      title: "Managed IT Services",
+      desc: "Proactive and ongoing IT management to ensure systems are always up and running smoothly",
+      img: "/it-service/managed-services.jpg"
+    },
+    {
+      id: "03",
+      title: "On-Site IT Support", 
+      desc: "Dedicated on-site engineers available to resolve technical issues at client locations",
+      img: "/it-service/onsite-support.jpg"
+    },
+    {
+      id: "04",
+      title: "Hardware Support and Maintenance",
+      desc: "Maintenance services for hardware from top brands like HP, Dell, Cisco, IBM, and more",
+      img: "/it-service/hardware-support.jpg"
+    },
+    {
+      id: "05",
+      title: "IMAC (Install, Move, Add, Change) Services",
+      desc: "Support for the installation, relocation, upgrading, and reconfiguration of IT systems and infrastructure.",
+      img: "/it-service/imac-services.jpg"
+    },
+    {
+      id: "06",
+      title: "Smart Hands Support",
+      desc: "Hands-on technical support for desktops, servers, and other devices, with expert guidance from certified engineers",
+      img: "/it-service/smart-hands.jpg"
+    },
+    {
+      id: "07",
+      title: "IT Consulting & Guidance",
+      desc: "Professional advice on IT infrastructure, system optimization, and technology solutions tailored to your business needs.",
+      img: "/it-service/consulting.jpg"
+    },
+    {
+      id: "08",
+      title: "Industry-Leading Vendor Support",
+      desc: "Certified support services for leading platforms and vendors including Cisco, Oracle, Fujitsu, EMC, and more.",
+      img: "/it-service/vendor-support.jpg"
+    }
+  ];
+
   return (
     <main className="w-full bg-white text-slate-800">
       {/* Banner */}
@@ -39,127 +91,77 @@ export default function Page() {
                 <span className="text-white break-words whitespace-normal leading-snug max-w-full">IT-SERVICE AND CONSULTANCY</span>
               </div>
 
-              {/* Big left-aligned heading + desc */}
+              {/* Big left-aligned heading */}
               <h1 className="mt-4 text-left text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
                 IT Support & Consultancy
               </h1>
-
-              <p className="mt-4 text-left text-lg md:text-xl text-white/90">
-                We deliver 24/7 managed IT support and on-demand technical services to businesses worldwide. Microsoft-certified engineers, fast on-site response (avg <strong>2-hour dispatch</strong>), unlimited user support and enterprise-grade solutions tailored to your needs.
-              </p>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Intro + Highlights */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-14 grid lg:grid-cols-3 gap-10 items-start">
-        {/* Left: Long description */}
-        <div className="lg:col-span-2 space-y-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#045494]">
-            We keep your business running — reliably and securely
-          </h2>
-          <p className="text-slate-700 leading-relaxed">
-            We deliver 24/7 managed IT support and on-demand technical services to businesses worldwide. Our Microsoft-certified engineers provide rapid on-site response (average <strong>2-hour dispatch</strong>) to resolve critical issues, backed by unlimited user support and expert technology consulting. Specializing in enterprise infrastructure, we offer industry-compliant IT solutions tailored to your operational needs, with certified expertise across HP, Dell, Cisco, Fujitsu, NetApp, EMC, Oracle, and Hitachi systems.
+      {/* Description Section */}
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+            We are focused on providing on-demand and managed IT support services around the globe and around the clock.
+            Our highly technical skilled team of engineers is available 24/7 to visit the client site and fix issues.
+            We provide unlimited on-site user support with a team of dedicated and skilled engineers offering professional advice and services.
+            Our certified experts provide IT support according to industry best practices meeting the business demand. We are a global IT support provider,
+            Supplying services on HP, IBM, DELL, CISCO, FUJITSU, NETAPP, EMC, Oracle/Sun, Hitachi, etc.
+            Our services include maintenance support, IMAC, smart hands support on Desktop servers, Storage, Tape libraries, Site survey, Etc. We are in business for the past 2 years and have our Head Office based In London (UK).
           </p>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-4">
-            <Feature
-              Icon={Clock}
-              title="Rapid On-Site Response"
-              text="Average 2-hour dispatch for critical incidents, minimizing downtime."
-            />
-            <Feature
-              Icon={Server}
-              title="Smart Hands & Data Center Support"
-              text="Server, storage, and tape library assistance with expert technicians."
-            />
-            <Feature
-              Icon={Cpu}
-              title="IMAC & Proactive Maintenance"
-              text="Installs, moves, adds, changes and proactive health checks."
-            />
-            <Feature
-              Icon={ShieldCheck}
-              title="Compliance & Security"
-              text="GDPR-compliant managed services and infrastructure security best practices."
-            />
+      {/* Our Services Section */}
+      <section className="py-16 px-6 md:px-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#045494] mb-4">
+              Our Services
+            </h2>
+            <p className="text-xl md:text-2xl font-semibold text-gray-700">
+              What We Serve
+            </p>
           </div>
 
-          <p className="text-slate-700 leading-relaxed mt-3">
-            Headquartered in Mildenhall with 2+ years of experience serving global clients, we combine enterprise-grade technical capabilities with SMB-friendly responsiveness to keep your business running smoothly.
-          </p>
+          {/* Services Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {servicesData.map((item) => (
+              <div
+                key={item.id}
+                className="rounded-[28px] bg-white shadow-sm hover:shadow-lg transition p-4 flex flex-col"
+              >
+                {/* Image */}
+                <div className="relative w-full h-48 rounded-[20px] overflow-hidden">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-          <div className="mt-6">
-            <a
-              href="/contactUs"
-              className="inline-flex items-center gap-3 bg-[#045494] text-white font-semibold px-6 py-3 rounded-[10px] shadow hover:shadow-lg transition"
-            >
-              Contact our team
-            </a>
+                {/* Content */}
+                <div className="mt-5">
+                  <span className="block text-sm font-bold text-[#045494]">
+                    {item.id}
+                  </span>
+                  <h3 className="text-lg md:text-xl font-semibold mt-1 text-[#045494]">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* Right: Service portfolio / quick list */}
-        <aside className="space-y-6">
-          <div className="rounded-[18px] p-5 border border-gray-100 shadow-sm">
-            <h3 className="text-lg font-semibold text-[#045494] mb-3">Our comprehensive service portfolio</h3>
-            <ul className="space-y-4">
-              <ListItem Icon={Cpu} label="Proactive maintenance & IMAC support" />
-              <ListItem Icon={Server} label="Smart Hands assistance for data center equipment" />
-              <ListItem Icon={MapPin} label="Network infrastructure audits & site surveys" />
-              <ListItem Icon={ShieldCheck} label="GDPR-compliant managed IT services" />
-              <ListItem Icon={Globe2} label="Multi-vendor certified expertise & consulting" />
-            </ul>
-          </div>
-
-          <div className="rounded-[18px] p-5 bg-[#F7FBFF] border border-[#E6F0FA]">
-            <h4 className="text-sm font-semibold text-[#045494]">Fast facts</h4>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              <Stat value="24/7" label="Support" />
-              <Stat value="2 hrs" label="Avg dispatch" />
-              <Stat value="99.9%" label="Service reliability" />
-              <Stat value="Multi-vendor" label="Certified engineers" />
-            </div>
-          </div>
-        </aside>
       </section>
+      <CompaniesScroller />
     </main>
-  );
-}
-
-/* ---------- Small components ---------- */
-
-function Feature({ Icon, title, text }) {
-  return (
-    <div className="flex items-start gap-4">
-      <div className="flex-none bg-[#045494]/10 p-3 rounded-full">
-        <Icon className="w-6 h-6 text-[#045494]" />
-      </div>
-      <div>
-        <h4 className="font-semibold text-slate-800">{title}</h4>
-        <p className="text-sm text-slate-600 mt-1">{text}</p>
-      </div>
-    </div>
-  );
-}
-
-function ListItem({ Icon, label }) {
-  return (
-    <li className="flex items-start gap-3">
-      <div className="flex-none bg-white rounded-full p-2 shadow-sm">
-        <Icon className="w-5 h-5 text-[#045494]" />
-      </div>
-      <span className="text-sm text-slate-700">{label}</span>
-    </li>
-  );
-}
-
-function Stat({ value, label }) {
-  return (
-    <div className="bg-white rounded-lg p-3 text-center shadow">
-      <div className="text-xl font-bold text-[#045494]">{value}</div>
-      <div className="text-xs text-slate-500">{label}</div>
-    </div>
   );
 }

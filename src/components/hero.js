@@ -6,7 +6,7 @@ const slides = [
   {
     id: 1,
     image: "/hero/card-1.jpeg",
-    title: "Your Full Business Back Office",
+    title: "Your business IT outsourcing Partner",
     text: "Flawless IT, Bookkeeping & Tax Compliance – All in One Place",
   },
   {

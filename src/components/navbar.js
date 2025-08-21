@@ -52,7 +52,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/why-us" className="text-[#171824] hover:text-[#0C4F8D] transition">Why Us</Link>
+          <Link href="/Aboutus" className="text-[#171824] hover:text-[#0C4F8D] transition">AboutUs</Link>
           <Link href="/blogs" className="text-[#171824] hover:text-[#0C4F8D] transition">Blogs</Link>
         </div>
 
@@ -131,8 +131,8 @@ export default function Navbar() {
             </div>
           </details>
 
-          <Link href="/why-us" className="block text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
-            Why Us
+          <Link href="/Aboutus" className="block text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
+            AboutUs
           </Link>
           <Link href="/blogs" className="block text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
             Blogs
