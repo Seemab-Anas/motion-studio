@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar"; 
-import Footer from "@/components/footer"; 
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import WhatsAppChat from "@/components/Whatsapp";
+import Script from "next/script"; // ✅ Import Script
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,8 +18,16 @@ export const metadata = {
     icon: "/icons/favicon.ico",
     apple: "/icons/apple-touch-icon.png",
     other: [
-      { rel: "icon", url: "/icons/android-chrome-192x192.png", sizes: "192x192" },
-      { rel: "icon", url: "/icons/android-chrome-512x512.png", sizes: "512x512" },
+      {
+        rel: "icon",
+        url: "/icons/android-chrome-192x192.png",
+        sizes: "192x192",
+      },
+      {
+        rel: "icon",
+        url: "/icons/android-chrome-512x512.png",
+        sizes: "512x512",
+      },
     ],
   },
 };
@@ -26,24 +35,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LSQ2K35X9"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-6LSQ2K35X9');
-            `,
-          }}
+      <body className={`${inter.variable} antialiased`}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-6LSQ2K35X9"
+          strategy="afterInteractive"
         />
-      </head>
-      <body
-        className={`${inter.variable} antialiased`}
-      >
-        <Navbar /> 
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6LSQ2K35X9');
+          `}
+        </Script>
+
+        <Navbar />
         {children}
         <WhatsAppChat />
         <Footer />
