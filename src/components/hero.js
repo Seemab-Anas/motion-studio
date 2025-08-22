@@ -6,14 +6,14 @@ const slides = [
   {
     id: 1,
     image: "/hero/card-1.jpeg",
-    title: "Your business IT outsourcing Partner",
-    text: "Flawless IT, Bookkeeping & Tax Compliance – All in One Place",
+    title: "Outsource IT the Smarter Way",
+    text: "The smarter way to scale your business: proactive, reliable IT outsourcing",
   },
   {
     id: 2,
     image: "/hero/card-2.jpeg",
-    title: "24/7 IT Support",
-    text: "Proactive Monitoring, Cybersecurity & Cloud Management – Fixing Issues Before They Cost You",
+    title: "24/7 Proactive IT Support",
+    text: "Round-the-clock support with proactive monitoring to stop downtime before it starts",
   },
   {
     id: 3,
@@ -24,8 +24,8 @@ const slides = [
   {
     id: 4,
     image: "/hero/card-4.jpeg",
-    title: "The Outsourcing Partner",
-    text: "Integrate Your IT & Finance Operations: Save upto 50% vs. In-House Teams",
+    title: "Outsource Smarter, Save More",
+    text: "Save up to 50% with integrated IT and finance outsourcing — without the in-house overhead",
   },
 ];
 

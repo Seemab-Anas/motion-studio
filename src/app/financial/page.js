@@ -17,7 +17,7 @@ export default function Page() {
       {/* Banner */}
       <header className="relative w-full h-[60vh] md:h-[60vh] lg:h-[68vh]">
         <Image
-          src="/banner/fb-solutions.jpg"
+          src="/banner/fb-solutions.jpeg"
           alt="Financial & Business Solutions banner"
           fill
           className="object-cover object-left"

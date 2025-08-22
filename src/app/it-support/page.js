@@ -69,12 +69,14 @@ export default function Page() {
       {/* Banner */}
       <header className="relative w-full h-[60vh] md:h-[60vh] lg:h-[68vh]">
         <Image
-          src="/banner/it-support.jpg"
+          src="/banner/it-support.jpeg"
           alt="IT Support banner"
           fill
           className="object-cover"
           priority
         />
+        {/* DARK BLACK OVERLAY */}
+        <div className="absolute inset-0 bg-black/70"></div>
 
         {/* subtle dark overlay for contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/10"></div>

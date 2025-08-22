@@ -5,55 +5,26 @@ import Image from 'next/image';
 
 const testimonials = [
   {
-    message: "Clarygen transformed our financial operations completely. Their expertise is unmatched.",
-    author: "Sarah Johnson",
-    avatar: "/testmonials/avatar1.png"
+    message: '"Whenever something goes wrong, Clarygen picks up straight away and sorts it. We’ve had late-night problems before and they’ve always been quick to respond. It’s a relief knowing someone’s there whenever we need them."',
+    author: "Richard M.",
+    avatar: "/testmonials/avatar1.webp"
   },
   {
-    message: "Professional, reliable, and always delivers on time. Best outsourcing partner we've had.",
-    author: "Michael Chen",
-    avatar: "/testmonials/avatar1.png"
+    message: '"We needed extra support across our offices, and Clarygen made it simple. Their engineers came on site and handled everything without fuss. What could have been a headache ended up being very smooth."',
+    author: "Helen P.",
+    avatar: "/testmonials/avatar1.webp"
   },
   {
-    message: "Their IT consultancy saved us thousands while improving our system efficiency.",
-    author: "Emma Thompson",
-    avatar: "/testmonials/avatar1.png"
+    message: '"Since Clarygen started looking after our systems, we don’t get the small breakdowns that used to slow us down. They deal with things before we even notice them most of the time. It means our team can just focus on work."',
+    author: "Emma L.",
+    avatar: "/testmonials/avatar1.webp"
   },
   {
-    message: "24/7 support that actually works. Clarygen has been a game-changer for our business.",
-    author: "James Wilson",
-    avatar: "/testmonials/avatar1.png"
+    message: '"They take care of our payroll and tax, which saves us a lot of hassle each month. It just runs in the background now."',
+    author: "Daniel R.",
+    avatar: "/testmonials/avatar1.webp"
   },
-  {
-    message: "Cost-effective solutions without compromising quality. Highly recommended!",
-    author: "Lisa Rodriguez",
-    avatar: "/testmonials/avatar1.png"
-  },
-  {
-    message: "Their team feels like an extension of our company. Excellent collaboration.",
-    author: "David Kumar",
-    avatar: "/testmonials/avatar1.png"
-  },
-  {
-    message: "Strategic outsourcing that actually reduces costs and improves efficiency.",
-    author: "Sophie Chen",
-    avatar: "/testmonials/avatar1.png"
-  },
-  {
-    message: "Innovation and reliability combined. Clarygen delivers exceptional results.",
-    author: "Robert Martinez",
-    avatar: "/testmonials/avatar1.png"
-  },
-  {
-    message: "Client-focused approach that adapts to our specific business needs perfectly.",
-    author: "Amanda Foster",
-    avatar: "/testmonials/avatar1.png"
-  },
-  {
-    message: "Dependable partner that consistently exceeds expectations. Five stars!",
-    author: "Mark Thompson",
-    avatar: "/testmonials/avatar1.png"
-  }
+
 ];
 
 export default function Testimonials() {
@@ -88,8 +59,8 @@ export default function Testimonials() {
                   key={index}
                   className="testimonial-card flex-shrink-0 bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"
                   style={{
-                    width: '380px',
-                    height: '200px',
+                    width: '400px',
+                    height: '280px',
                   }}
                 >
                   <div className="flex flex-col h-full">
