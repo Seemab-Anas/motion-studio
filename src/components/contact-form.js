@@ -7,6 +7,9 @@ import {
   Briefcase,
   MessageSquare,
   ArrowRight,
+  CheckCircle,
+  AlertCircle,
+  X,
 } from "lucide-react";
 
 import PhoneInput from "react-phone-input-2";
@@ -21,6 +24,13 @@ export default function ContactForm() {
     message: "",
   });
   const [sending, setSending] = useState(false);
+  const [toast, setToast] = useState({ open: false, type: "success", message: "" });
+
+  function showToast(type, message) {
+    setToast({ open: true, type, message });
+    // Auto-hide after 3 seconds
+    setTimeout(() => setToast((t) => ({ ...t, open: false })), 3000);
+  }
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -29,23 +39,35 @@ export default function ContactForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    // Basic phone validation (ensure at least 8 digits)
+    const phoneDigits = (form.phone || "").replace(/\D/g, "");
+    if (!phoneDigits || phoneDigits.length < 8) {
+      showToast("error", "Please enter a valid phone number.");
+      return;
+    }
+
     setSending(true);
+    try {
+      console.log("form submit", form);
+      await new Promise((r) => setTimeout(r, 700));
 
-    console.log("form submit", form);
-    await new Promise((r) => setTimeout(r, 700));
-
-    setSending(false);
-    alert("Message sent — we'll get back to you soon!");
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      message: "",
-    });
+      showToast("success", "Message sent — we'll get back to you soon!");
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } catch (err) {
+      showToast("error", "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
+    <>
     <section className="w-full bg-[#0b0b0c] text-white py-16 px-6 md:px-12">
       <style>{`
         :root { --accent: #045494; }
@@ -96,8 +118,11 @@ export default function ContactForm() {
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <h2 className="text-4xl md:text-5xl font-extralight leading-tight">
-            How can we serve you ?
+            Get in touch with us
           </h2>
+          <p className="mt-2 text-slate-400">
+            Please complete all the feilds below so that we can respond to your inquiry.
+          </p>
         </div>
 
         <form
@@ -146,6 +171,9 @@ export default function ContactForm() {
                 inputProps={{
                   name: "phone",
                   required: true,
+                  type: "tel",
+                  inputMode: "tel",
+                  autoComplete: "tel",
                 }}
               />
             </div>
@@ -161,6 +189,7 @@ export default function ContactForm() {
                 onChange={handleChange}
                 placeholder="Company / project name"
                 className="w-full bg-transparent border rounded-xl py-4 pl-14 pr-4 outline-none border-white/10 placeholder:text-slate-500"
+                required
               />
             </div>
 
@@ -173,9 +202,10 @@ export default function ContactForm() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Describe the services you looking for/challenges you facing"
+                placeholder="how can we help you"
                 rows={5}
                 className="w-full bg-transparent border rounded-xl py-4 pl-14 pr-4 outline-none border-white/10 placeholder:text-slate-500 resize-none"
+                required
               />
             </div>
 
@@ -235,5 +265,30 @@ export default function ContactForm() {
         </form>
       </div>
     </section>
+    {/* Toast */}
+    {toast.open && (
+      <div
+        className={`fixed bottom-6 right-6 z-[9999] flex items-start gap-3 rounded-xl border px-4 py-3 shadow-lg backdrop-blur
+          ${toast.type === "success" ? "bg-emerald-900/20 border-emerald-500/30 text-emerald-200" : ""}
+          ${toast.type === "error" ? "bg-rose-900/20 border-rose-500/30 text-rose-200" : ""}
+        `}
+      >
+        <div className="mt-0.5">
+          {toast.type === "success" && <CheckCircle className="w-5 h-5 text-emerald-400" />}
+          {toast.type === "error" && <AlertCircle className="w-5 h-5 text-rose-400" />}
+        </div>
+        <div className="pr-2 text-sm">
+          {toast.message}
+        </div>
+        <button
+          onClick={() => setToast((t) => ({ ...t, open: false }))}
+          className="ml-2 rounded-full p-1 hover:bg-white/10"
+          aria-label="Close"
+        >
+          <X className="w-4 h-4" />
+        </button>
+      </div>
+    )}
+    </>
   );
 }

@@ -7,22 +7,22 @@ const testimonials = [
   {
     message: '"Whenever something goes wrong, Clarygen picks up straight away and sorts it. We’ve had late-night problems before and they’ve always been quick to respond. It’s a relief knowing someone’s there whenever we need them."',
     author: "Richard M.",
-    avatar: "/testmonials/avatar1.webp"
+    avatar: "/testmonials/Richard.png"
   },
   {
     message: '"We needed extra support across our offices, and Clarygen made it simple. Their engineers came on site and handled everything without fuss. What could have been a headache ended up being very smooth."',
-    author: "Helen P.",
-    avatar: "/testmonials/avatar1.webp"
+    author: "Hellen P.",
+    avatar: "/testmonials/Hellen.png"
   },
   {
     message: '"Since Clarygen started looking after our systems, we don’t get the small breakdowns that used to slow us down. They deal with things before we even notice them most of the time. It means our team can just focus on work."',
     author: "Emma L.",
-    avatar: "/testmonials/avatar1.webp"
+    avatar: "/testmonials/Emma.png"
   },
   {
     message: '"They take care of our payroll and tax, which saves us a lot of hassle each month. It just runs in the background now."',
     author: "Daniel R.",
-    avatar: "/testmonials/avatar1.webp"
+    avatar: "/testmonials/Daniel.png"
   },
 
 ];
@@ -70,7 +70,7 @@ export default function Testimonials() {
                         alt={testimonial.author}
                         width={48}
                         height={48}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-center"
                       />
                     </div>
                     <div className="flex flex-col justify-between flex-grow">

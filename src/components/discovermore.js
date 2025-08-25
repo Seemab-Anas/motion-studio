@@ -13,7 +13,7 @@ export default function AboutBanner() {
         <div className="space-y-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Global IT & Financial Solutions for Businesses –{" "}
-            <span className="text-[#0C4F8D]">Trusted by 5,643+ Clients Worldwide</span>
+            <span className="text-[#0C4F8D]">Trusted by 537+ Clients Worldwide</span>
           </h1>
 
           <div className="space-y-6">

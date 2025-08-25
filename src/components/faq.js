@@ -78,26 +78,38 @@ const FAQ = () => {
 
   const faqItems = [
     {
-      question: "What services does Clarygen provide?",
-      answer: "Clarygen offers comprehensive outsourcing solutions including financial management, IT consultancy, business process optimization, and 24/7 support services. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      question: "What services does Vera Tech Solutions Limited offer?",
+      answer: "Vera Tech Solutions Limited specializes in providing customized outsourcing solutions, including IT consulting, financial management, process optimization, and operational efficiency services. We help businesses streamline their operations, reduce costs, and improve productivity."
     },
     {
-      question: "How does Clarygen ensure data security and confidentiality?",
-      answer: "We implement industry-leading security protocols, encrypted data transmission, secure cloud infrastructure, and strict confidentiality agreements. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam."
+      question: "How does Vera Tech Solutions Limited tailor its services to each business?",
+      answer: "We understand that every business is unique. Our team works closely with clients to assess their specific needs and challenges, then designs personalized solutions that align with their goals and objectives."
     },
     {
-      question: "What makes Clarygen different from other outsourcing companies?",
-      answer: "Our 24/7 availability, personalized approach, cost-effective solutions, and deep industry expertise set us apart. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud exercitation."
+      question: "What industries does Vera Tech Solutions Limited serve?",
+      answer: "Our team has experience across a wide range of industries, including technology, finance, healthcare, manufacturing, and more. We leverage our expertise to offer solutions that cater to the distinct needs of each sector."
     },
     {
-      question: "How quickly can Clarygen implement solutions for my business?",
-      answer: "Implementation timelines vary based on project complexity, but most solutions can be deployed within 2-4 weeks. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud exercitation ullamco."
+      question: "How experienced is your team?",
+      answer: "Vera Tech Solutions Limited is backed by a team of highly skilled professionals with extensive experience in various industries. Our team stays updated on the latest technologies and trends to provide innovative solutions to our clients."
     },
     {
-      question: "What kind of ongoing support does Clarygen provide?",
-      answer: "We offer comprehensive 24/7 support, regular performance reviews, continuous optimization, and dedicated account management. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam."
+      question: "What makes Vera Tech Solutions Limited different from other outsourcing companies?",
+      answer: "We prioritize customer satisfaction and quality service. Our personalized approach, 24/7 support, and dedication to delivering exceptional results set us apart. We take the time to understand each client’s unique challenges and craft solutions that truly make a difference."
     },
-  ];
+    {
+      question: "How can I get started with Vera Tech Solutions Limited?",
+      answer: "Getting started is easy. Simply reach out to us through our website or contact us directly, and our team will schedule a consultation to understand your needs and discuss the best solutions for your business."
+    },
+    {
+      question: "What types of businesses can benefit from your services?",
+      answer: "Our services are designed for businesses of all sizes, from startups to established enterprises, across various industries. Whether you need assistance with IT support, financial management, or other operational tasks, we can help your business grow and thrive."
+    },
+    {
+      question: "Is your customer support available 24/7?",
+      answer: "Yes! Our team is available around the clock to assist with any inquiries, concerns, or technical issues. We are committed to providing exceptional customer service whenever you need it."
+    }
+  ];  
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">

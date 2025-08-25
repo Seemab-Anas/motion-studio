@@ -7,6 +7,7 @@ import { useState } from 'react';
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isBlogsOpen, setIsBlogsOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 px-4 py-3">
@@ -53,7 +54,37 @@ export default function Navbar() {
           </div>
 
           <Link href="/Aboutus" className="text-[#171824] hover:text-[#0C4F8D] transition">About Us</Link>
-          <Link href="/blogs" className="text-[#171824] hover:text-[#0C4F8D] transition">Blogs</Link>
+
+          {/* Blogs Dropdown */}
+          <div
+            className="relative group"
+            onMouseEnter={() => setIsBlogsOpen(true)}
+            onMouseLeave={() => setIsBlogsOpen(false)}
+            onFocus={() => setIsBlogsOpen(true)}
+            onBlur={() => setIsBlogsOpen(false)}
+          >
+            <button
+              className="text-[#171824] hover:text-[#0C4F8D] transition flex items-center"
+            >
+              Blogs ▾
+            </button>
+            <div className={`absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg overflow-hidden transition-all ${
+              isBlogsOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+            }`}>
+              <Link href="/blogs" className="block px-4 py-2 text-sm text-[#171824] hover:bg-gray-100">
+                All Blogs
+              </Link>
+              <Link href="/blogs/future-of-it-outsourcing-proactive-support" className="block px-4 py-2 text-sm text-[#171824] hover:bg-gray-100">
+                The Future of IT Outsourcing
+              </Link>
+              <Link href="/blogs/financial-outsourcing-acca-certified-growth" className="block px-4 py-2 text-sm text-[#171824] hover:bg-gray-100">
+                Mastering Financial Outsourcing
+              </Link>
+              <Link href="/blogs/integrated-it-financial-solutions-uk-advantage" className="block px-4 py-2 text-sm text-[#171824] hover:bg-gray-100">
+                Integrated IT & Financial Solutions
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Desktop Button */}
@@ -134,9 +165,25 @@ export default function Navbar() {
           <Link href="/Aboutus" className="block text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
             About Us
           </Link>
-          <Link href="/blogs" className="block text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
-            Blogs
-          </Link>
+
+          {/* Blogs mobile dropdown */}
+          <details>
+            <summary className="cursor-pointer text-[#171824] hover:text-[#0C4F8D]">Blogs</summary>
+            <div className="ml-4 mt-2 space-y-2">
+              <Link href="/blogs" className="block text-sm text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
+                All Blogs
+              </Link>
+              <Link href="/blogs/future-of-it-outsourcing-proactive-support" className="block text-sm text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
+                The Future of IT Outsourcing
+              </Link>
+              <Link href="/blogs/financial-outsourcing-acca-certified-growth" className="block text-sm text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
+                Mastering Financial Outsourcing
+              </Link>
+              <Link href="/blogs/integrated-it-financial-solutions-uk-advantage" className="block text-sm text-[#171824] hover:text-[#0C4F8D]" onClick={() => setIsMenuOpen(false)}>
+                Integrated IT & Financial Solutions
+              </Link>
+            </div>
+          </details>
 
           <Link
             href="/contactUs"

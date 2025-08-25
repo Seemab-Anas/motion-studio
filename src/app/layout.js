@@ -3,7 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import WhatsAppChat from "@/components/Whatsapp";
-import Script from "next/script"; // ✅ Import Script
+import CookieConsent from "@/components/CookieConsent";
+import Analytics from "@/components/Analytics";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,19 +37,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        {/* ✅ Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-6LSQ2K35X9"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-6LSQ2K35X9');
-          `}
-        </Script>
+        {/* Consent banner and conditional analytics */}
+        <CookieConsent />
+        <Analytics />
 
         {/* App Components */}
         <Navbar />

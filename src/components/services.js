@@ -137,7 +137,7 @@ export default function Services() {
 
             <div className="mt-auto p-4 bg-blue-50 rounded-lg">
               <p className="text-sm text-blue-800">
-                <strong>Global Reach:</strong> Head Office in London (UK). In business for the past 2 years, delivering 24/7 global IT support.
+                <strong>Global Reach:</strong> Head Office in Mildenhall (UK). In business for the past 2 years, delivering 24/7 global IT support.
               </p>
             </div>
           </div>
