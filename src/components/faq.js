@@ -78,27 +78,27 @@ const FAQ = () => {
 
   const faqItems = [
     {
-      question: "What services does Vera Tech Solutions Limited offer?",
-      answer: "Vera Tech Solutions Limited specializes in providing customized outsourcing solutions, including IT consulting, financial management, process optimization, and operational efficiency services. We help businesses streamline their operations, reduce costs, and improve productivity."
+      question: "What services does Clarygen offer?",
+      answer: "Clarygen specializes in providing customized outsourcing solutions, including IT consulting, financial management, process optimization, and operational efficiency services. We help businesses streamline their operations, reduce costs, and improve productivity."
     },
     {
-      question: "How does Vera Tech Solutions Limited tailor its services to each business?",
+      question: "How does Clarygen tailor its services to each business?",
       answer: "We understand that every business is unique. Our team works closely with clients to assess their specific needs and challenges, then designs personalized solutions that align with their goals and objectives."
     },
     {
-      question: "What industries does Vera Tech Solutions Limited serve?",
+      question: "What industries does Clarygen serve?",
       answer: "Our team has experience across a wide range of industries, including technology, finance, healthcare, manufacturing, and more. We leverage our expertise to offer solutions that cater to the distinct needs of each sector."
     },
     {
       question: "How experienced is your team?",
-      answer: "Vera Tech Solutions Limited is backed by a team of highly skilled professionals with extensive experience in various industries. Our team stays updated on the latest technologies and trends to provide innovative solutions to our clients."
+      answer: "Clarygen is backed by a team of highly skilled professionals with extensive experience in various industries. Our team stays updated on the latest technologies and trends to provide innovative solutions to our clients."
     },
     {
-      question: "What makes Vera Tech Solutions Limited different from other outsourcing companies?",
+      question: "What makes Clarygen different from other outsourcing companies?",
       answer: "We prioritize customer satisfaction and quality service. Our personalized approach, 24/7 support, and dedication to delivering exceptional results set us apart. We take the time to understand each client’s unique challenges and craft solutions that truly make a difference."
     },
     {
-      question: "How can I get started with Vera Tech Solutions Limited?",
+      question: "How can I get started with Clarygen?",
       answer: "Getting started is easy. Simply reach out to us through our website or contact us directly, and our team will schedule a consultation to understand your needs and discuss the best solutions for your business."
     },
     {

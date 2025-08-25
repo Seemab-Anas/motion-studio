@@ -111,7 +111,7 @@ export default function Page() {
             We provide unlimited on-site user support with a team of dedicated and skilled engineers offering professional advice and services.
             Our certified experts provide IT support according to industry best practices meeting the business demand. We are a global IT support provider,
             Supplying services on HP, IBM, DELL, CISCO, FUJITSU, NETAPP, EMC, Oracle/Sun, Hitachi, etc.
-            Our services include maintenance support, IMAC, smart hands support on Desktop servers, Storage, Tape libraries, Site survey, Etc. We are in business for the past 2 years and have our Head Office based In London (UK).
+            Our services include maintenance support, IMAC, smart hands support on Desktop servers, Storage, Tape libraries, Site survey, Etc. We are in business for the past 2 years and have our Head Office based In Mildenhall (UK).
           </p>
         </div>
       </section>

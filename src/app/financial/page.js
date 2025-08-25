@@ -89,7 +89,7 @@ export default function Page() {
           </div>
 
           <p className="text-slate-700 leading-relaxed mt-3">
-            Headquartered in London with 5+ years of cross-sector experience, we combine enterprise-grade financial expertise with personalised support to help UK businesses minimise liabilities and maximise operational efficiency.
+            Headquartered in Mildenhall, UK with 5+ years of cross-sector experience, we combine enterprise-grade financial expertise with personalised support to help UK businesses minimise liabilities and maximise operational efficiency.
           </p>
 
           <div className="mt-6">
@@ -128,7 +128,7 @@ export default function Page() {
             <div className="text-sm text-slate-700">
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-[#045494]" />
-                <span>Headquartered in London</span>
+                <span>Headquartered in Mildenhall, UK</span>
               </div>
               <p className="mt-3 text-xs text-slate-500">Personalised financial teams for UK businesses — focus on accuracy, compliance and growth.</p>
             </div>
