@@ -4,6 +4,7 @@ import Counter from '@/components/counter';
 import DiscoverMore from '@/components/discovermore';
 import Vision from '@/components/vision';
 import ContactForm from '@/components/contact-form';
+import Testimonials from '@/components/testmonials';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Counter />
       <DiscoverMore />
       <Vision/>
+      <Testimonials />
       <ContactForm />
     </main>
   );
