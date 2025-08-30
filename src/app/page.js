@@ -1,21 +1,22 @@
-import Hero from '@/components/hero';
-import Services from '@/components/services';
-import Counter from '@/components/counter';
-import DiscoverMore from '@/components/discovermore';
-import Vision from '@/components/vision';
-import ContactForm from '@/components/contact-form';
-import Testimonials from '@/components/testmonials';
+'use client';
+
+import Hero from '@/components/Hero';
+import MyExpertise from '@/components/Experties';
+import SelectedWorks from '@/components/SelectedWorks';
+import Testimonials from '@/components/Testmonials';
+import ContactUs from '@/components/ContactUs';
+import Team from '@/components/Team';
 
 export default function Home() {
+  
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <Services />
-      <Counter />
-      <DiscoverMore />
-      <Vision/>
+    <main>
+      <Hero /> 
+      <MyExpertise />
+      <SelectedWorks />
       <Testimonials />
-      <ContactForm />
+      <ContactUs />
+      <Team />
     </main>
   );
 }

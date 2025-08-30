@@ -1,104 +1,94 @@
-"use client"
-import { useRef } from 'react';
-import Image from 'next/image';
-
-
-const testimonials = [
-  {
-    message: '"Whenever something goes wrong, Clarygen picks up straight away and sorts it. We’ve had late-night problems before and they’ve always been quick to respond. It’s a relief knowing someone’s there whenever we need them."',
-    author: "Richard M.",
-    avatar: "/testmonials/Richard.png"
-  },
-  {
-    message: '"We needed extra support across our offices, and Clarygen made it simple. Their engineers came on site and handled everything without fuss. What could have been a headache ended up being very smooth."',
-    author: "Hellen P.",
-    avatar: "/testmonials/Hellen.png"
-  },
-  {
-    message: '"Since Clarygen started looking after our systems, we don’t get the small breakdowns that used to slow us down. They deal with things before we even notice them most of the time. It means our team can just focus on work."',
-    author: "Emma L.",
-    avatar: "/testmonials/Emma.png"
-  },
-  {
-    message: '"They take care of our payroll and tax, which saves us a lot of hassle each month. It just runs in the background now."',
-    author: "Daniel R.",
-    avatar: "/testmonials/Daniel.png"
-  },
-
-];
+'use client';
 
 export default function Testimonials() {
-  const containerRef = useRef(null);
+  const testimonials = [
+    {
+      id: 1,
+      name: "Alan Voong",
+      title: "Sr Full Stack Engineer",
+      company: "PlayStation",
+      avatar: "/images/alan-avatar.jpg", // Replace with actual avatar paths
+      rating: 5,
+      testimonial: "Nick's ability to innovate and deliver designs that impress regardless is a rare talent. Nick takes ownership in his projects. It was always a pleasure working with him."
+    },
+    {
+      id: 2,
+      name: "Tina Sang",
+      title: "Marketing Manager",
+      company: "Lightspeed Studio",
+      avatar: "/images/tina-avatar.jpg",
+      rating: 5,
+      testimonial: "He's got a great taste that you can always count on, making designs that speak to the audience, whether it's for video games or editorial websites. It's great working w/ him!"
+    },
+    {
+      id: 3,
+      name: "Carlos Estrada",
+      title: "Associate Creative Director",
+      company: "Apple",
+      avatar: "/images/carlos-avatar.jpg",
+      rating: 5,
+      testimonial: "Nick is an extremely talented designer with passion for days. His creative experience is super diverse which lends itself to a very strong leadership quality he posses."
+    }
+  ];
 
-  // Duplicate testimonials for infinite slider effect
-  const testimonialSlider = [...testimonials, ...testimonials];
+
 
   return (
-    <section className="py-16 md:py-24 bg-white" ref={containerRef}>
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Header section */}
-        <div className="text-left mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Client Testimonials
+    <section className="testimonials bg-gray-100 py-20 px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex justify-between items-start mb-16">
+          <h2 className="text-black text-8xl font-anton leading-none">
+            INDUSTRY<br />
+            APPROVED
           </h2>
-          <p className="text-lg text-gray-700 max-w-4xl">
-            Clarygen has transformed the business operations of over 500+ companies worldwide through strategic outsourcing and innovative solutions.
-          </p>
-        </div>
-
-        {/* Testimonials section */}
-        <div className="overflow-hidden">
-          <div className="relative">
-            {/* Gradient overlays */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
-            
-            <div className="flex animate-scroll-left gap-8 w-max" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
-              {testimonialSlider.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="testimonial-card flex-shrink-0 bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"
-                  style={{
-                    width: '400px',
-                    height: '280px',
-                  }}
-                >
-                  <div className="flex flex-col h-full">
-                    <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 mb-4">
-                      <Image
-                        src={testimonial.avatar}
-                        alt={testimonial.author}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-cover object-center"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-between flex-grow">
-                      <p className="text-gray-800 text-base mb-4 leading-relaxed">{testimonial.message}</p>
-                      <p className="text-gray-600 text-sm font-medium">{testimonial.author}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="text-right max-w-md">
+            <p className="text-black font-manrope text-sm font-light uppercase tracking-wide leading-relaxed">
+              HEAR FROM CLIENTS AND OTHER<br />
+              PROFESSIONALS ON WHAT YOU CAN EXPECT<br />
+              WHEN WORKING WITH ME
+            </p>
           </div>
         </div>
-      </div>
 
-      <style jsx global>{`
-        @keyframes scrollLeft {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        .animate-scroll-left {
-          animation: scrollLeft 60s linear infinite;
-        }
-      `}</style>
+        {/* Divider Line */}
+        <div className="w-full h-px bg-black mb-16"></div>
+
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="testimonial-card bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
+            >
+              {/* Avatar */}
+              <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-6 mx-auto">
+                {/* Placeholder for avatar - replace with actual images */}
+                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                  <span className="text-gray-600 text-sm font-manrope">
+                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  </span>
+                </div>
+              </div>
+
+              {/* Testimonial Text */}
+              <p className="text-gray-700 font-manrope text-base leading-relaxed mb-6 text-center">
+                {testimonial.testimonial}
+              </p>
+
+              {/* Author Info */}
+              <div className="text-center">
+                <h4 className="text-black font-manrope font-semibold text-lg mb-1">
+                  {testimonial.name}
+                </h4>
+                <p className="text-gray-500 font-manrope text-sm">
+                  {testimonial.company}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
