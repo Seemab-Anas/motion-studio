@@ -3,7 +3,7 @@
 import Hero from '@/components/Hero';
 import MyExpertise from '@/components/Experties';
 import SelectedWorks from '@/components/SelectedWorks';
-import Testimonials from '@/components/Testmonials';
+import Testimonials from '@/components/Testimonials';
 import ContactUs from '@/components/ContactUs';
 import Team from '@/components/Team';
 
