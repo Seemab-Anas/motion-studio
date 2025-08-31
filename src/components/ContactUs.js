@@ -1,16 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function ContactUs() {
+  const letsTextRef = useRef(null);
+  const connectTextRef = useRef(null);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     project: '',
-    budget: '',
     message: ''
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,43 +25,121 @@ export default function ContactUs() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    try {
+      // Replace these with your EmailJS credentials
+      const serviceID = 'service_utxdciv';
+      const templateID = 'template_tnps9p3';
+      const publicKey = '86jet4eyLDP_AnWdC';
+
+      // EmailJS send function (you'll need to include EmailJS script)
+      const response = await window.emailjs.send(
+        serviceID,
+        templateID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company || 'Not specified',
+          project_type: formData.project,
+          message: formData.message,
+          to_email: 'nickolaskossup@gmail.com'
+        },
+        publicKey
+      );
+
+      if (response.status === 200) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          project: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      // Clear status message after 5 seconds
+      setTimeout(() => setSubmitStatus(''), 5000);
+    }
   };
 
-  const budgetOptions = [
-    'Under $5,000',
-    '$5,000 - $10,000',
-    '$10,000 - $25,000',
-    '$25,000 - $50,000',
-    '$50,000+'
-  ];
-
   const projectTypes = [
-    'Web Design & Development',
-    'Branding & Identity',
-    'Gaming & Interactive',
-    'Marketing & Campaigns',
-    'UI/UX Design',
+    'Business Website',
+    'E-commerce Store',
+    'Landing Page',
+    'Web Application',
+    'Website Redesign',
     'Other'
   ];
+
+  useEffect(() => {
+    // Load EmailJS script
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    script.onload = () => {
+      window.emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your public key
+    };
+    document.head.appendChild(script);
+
+    // Simple animations without GSAP
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transform = 'translateX(0)';
+          entry.target.style.opacity = '1';
+        }
+      });
+    }, observerOptions);
+
+    if (letsTextRef.current) {
+      letsTextRef.current.style.transform = 'translateX(-50px)';
+      letsTextRef.current.style.opacity = '0';
+      letsTextRef.current.style.transition = 'all 0.8s ease-out';
+      observer.observe(letsTextRef.current);
+    }
+
+    if (connectTextRef.current) {
+      connectTextRef.current.style.transform = 'translateX(50px)';
+      connectTextRef.current.style.opacity = '0';
+      connectTextRef.current.style.transition = 'all 0.8s ease-out 0.2s';
+      observer.observe(connectTextRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      // Cleanup script
+      const scripts = document.querySelectorAll('script[src*="emailjs"]');
+      scripts.forEach(script => script.remove());
+    };
+  }, []);
 
   return (
     <section className="contact-us bg-black text-white min-h-screen py-20 mx-8 mb-8 rounded-3xl">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <div className="flex justify-between items-start mb-16">
-          <h2 className="text-white text-8xl font-anton leading-none">
-            LET'S<br />
-            CONNECT
+          <h2 className="text-white text-8xl font-bold leading-none">
+            <span ref={letsTextRef} className="block">LET'S</span>
+            <span ref={connectTextRef} className="block">CONNECT</span>
           </h2>
           <div className="text-right max-w-md">
-            <p className="text-white font-manrope text-sm font-light uppercase tracking-wide leading-relaxed">
-              READY TO BRING YOUR VISION TO LIFE?<br />
-              LET'S DISCUSS YOUR PROJECT AND<br />
-              CREATE SOMETHING AMAZING TOGETHER
+            <p className="text-white text-sm font-light uppercase tracking-wide leading-relaxed">
+              READY TO BUILD YOUR WEBSITE?<br />
+              LET'S DISCUSS YOUR WEB DEVELOPMENT<br />
+              PROJECT AND CREATE SOMETHING AMAZING
             </p>
           </div>
         </div>
@@ -70,7 +153,7 @@ export default function ContactUs() {
           {/* Left Side - Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-white font-anton text-3xl mb-6">GET IN TOUCH</h3>
+              <h3 className="text-white font-bold text-3xl mb-6">GET IN TOUCH</h3>
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
@@ -79,8 +162,8 @@ export default function ContactUs() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-400 font-manrope text-sm uppercase tracking-wide">Email</p>
-                    <p className="text-white font-manrope text-lg">nickolaskossup@gmail.com</p>
+                    <p className="text-gray-400 text-sm uppercase tracking-wide">Email</p>
+                    <p className="text-white text-lg">nickolaskossup@gmail.com</p>
                   </div>
                 </div>
 
@@ -91,8 +174,8 @@ export default function ContactUs() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-400 font-manrope text-sm uppercase tracking-wide">Location</p>
-                    <p className="text-white font-manrope text-lg">Available Worldwide</p>
+                    <p className="text-gray-400 text-sm uppercase tracking-wide">Services</p>
+                    <p className="text-white text-lg">Web Development</p>
                   </div>
                 </div>
 
@@ -103,22 +186,43 @@ export default function ContactUs() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-400 font-manrope text-sm uppercase tracking-wide">Response Time</p>
-                    <p className="text-white font-manrope text-lg">Within 24 Hours</p>
+                    <p className="text-gray-400 text-sm uppercase tracking-wide">Response Time</p>
+                    <p className="text-white text-lg">Within 24 Hours</p>
                   </div>
                 </div>
               </div>
             </div>
-
-
           </div>
 
           {/* Right Side - Contact Form */}
           <div>
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="mb-6 bg-green-500 bg-opacity-20 border border-green-500 text-green-400 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Message sent successfully! I'll get back to you within 24 hours.</span>
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mb-6 bg-red-500 bg-opacity-20 border border-red-500 text-red-400 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  <span>Failed to send message. Please try again or email me directly.</span>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-white font-manrope text-sm mb-2">
+                  <label className="block text-white text-sm mb-2">
                     Full Name *
                   </label>
                   <input
@@ -126,13 +230,13 @@ export default function ContactUs() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-manrope focus:outline-none focus:border-white transition-colors"
+                    className="w-full bg-gray-100 border border-gray-300 px-4 py-3 text-black focus:outline-none focus:border-gray-500 transition-colors"
                     placeholder="Enter your name"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-white font-manrope text-sm mb-2">
+                  <label className="block text-white text-sm mb-2">
                     Email Address *
                   </label>
                   <input
@@ -140,7 +244,7 @@ export default function ContactUs() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-manrope focus:outline-none focus:border-white transition-colors"
+                    className="w-full bg-gray-100 border border-gray-300 px-4 py-3 text-black focus:outline-none focus:border-gray-500 transition-colors"
                     placeholder="Enter your email"
                     required
                   />
@@ -149,7 +253,7 @@ export default function ContactUs() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-white font-manrope text-sm mb-2">
+                  <label className="block text-white text-sm mb-2">
                     Company/Organization
                   </label>
                   <input
@@ -157,19 +261,19 @@ export default function ContactUs() {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-manrope focus:outline-none focus:border-white transition-colors"
+                    className="w-full bg-gray-100 border border-gray-300 px-4 py-3 text-black focus:outline-none focus:border-gray-500 transition-colors"
                     placeholder="Your company name"
                   />
                 </div>
                 <div>
-                  <label className="block text-white font-manrope text-sm mb-2">
+                  <label className="block text-white text-sm mb-2">
                     Project Type *
                   </label>
                   <select
                     name="project"
                     value={formData.project}
                     onChange={handleInputChange}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-manrope focus:outline-none focus:border-white transition-colors"
+                    className="w-full bg-gray-100 border border-gray-300 px-4 py-3 text-black focus:outline-none focus:border-gray-500 transition-colors"
                     required
                   >
                     <option value="">Select project type</option>
@@ -181,24 +285,7 @@ export default function ContactUs() {
               </div>
 
               <div>
-                <label className="block text-white font-manrope text-sm mb-2">
-                  Project Budget
-                </label>
-                <select
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleInputChange}
-                  className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-manrope focus:outline-none focus:border-white transition-colors"
-                >
-                  <option value="">Select budget range</option>
-                  {budgetOptions.map((budget) => (
-                    <option key={budget} value={budget}>{budget}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-white font-manrope text-sm mb-2">
+                <label className="block text-white text-sm mb-2">
                   Project Details *
                 </label>
                 <textarea
@@ -206,18 +293,39 @@ export default function ContactUs() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={6}
-                  className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-manrope focus:outline-none focus:border-white transition-colors resize-none"
-                  placeholder="Tell me about your project goals, timeline, and any specific requirements..."
+                  className="w-full bg-gray-100 border border-gray-300 px-4 py-3 text-black focus:outline-none focus:border-gray-500 transition-colors resize-none"
+                  placeholder="Tell me about your web development project, goals, timeline, and any specific requirements..."
                   required
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-white text-black font-manrope font-semibold py-4 px-8 rounded-lg hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center gap-3"
+                disabled={isSubmitting}
+                className={`w-full font-semibold py-4 px-8 transition-all duration-200 flex items-center justify-center gap-3 ${
+                  isSubmitting 
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                    : 'bg-white text-black hover:bg-gray-100'
+                }`}
+                onMouseEnter={(e) => {
+                  if (!isSubmitting) {
+                    const svg = e.target.querySelector('svg');
+                    if (svg) svg.style.transform = 'rotate(45deg)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  const svg = e.target.querySelector('svg');
+                  if (svg) svg.style.transform = 'rotate(0deg)';
+                }}
               >
-                Send Message
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+                <svg 
+                  className="w-5 h-5" 
+                  style={{ transition: 'transform 0.3s ease' }}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
               </button>
@@ -225,8 +333,6 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-
-
     </section>
   );
 }

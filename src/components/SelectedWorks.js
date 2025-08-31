@@ -1,48 +1,94 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+
 export default function SelectedWorks() {
+  const selectedTextRef = useRef(null);
+  const workTextRef = useRef(null);
+  
+  useEffect(() => {
+    // Simple animations without GSAP
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transform = 'translateX(0)';
+          entry.target.style.opacity = '1';
+        }
+      });
+    }, observerOptions);
+
+    if (selectedTextRef.current) {
+      selectedTextRef.current.style.transform = 'translateX(-50px)';
+      selectedTextRef.current.style.opacity = '0';
+      selectedTextRef.current.style.transition = 'all 0.8s ease-out';
+      observer.observe(selectedTextRef.current);
+    }
+
+    if (workTextRef.current) {
+      workTextRef.current.style.transform = 'translateX(50px)';
+      workTextRef.current.style.opacity = '0';
+      workTextRef.current.style.transition = 'all 0.8s ease-out 0.2s';
+      observer.observe(workTextRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const works = [
     {
       id: 1,
-      title: "Gaming",
-      subtitle: "Marketing",
-      image: "/images/gaming-work.jpg", // Replace with your actual image paths
-      category: "gaming"
+      title: "StudySure",
+      subtitle: "Study Abroad Website",
+      image: "/our-works/mockup1.webp",
+      category: "education",
+      link: "https://www.studysure.org/"
     },
     {
       id: 2,
-      title: "Web Design",
-      subtitle: "Development",
-      image: "/images/web-design-work.jpg",
-      category: "web"
+      title: "NEXDEF",
+      subtitle: "News Website",
+      image: "/our-works/mockup2.webp",
+      category: "news",
+      link: "https://nex-def.com/"
     },
     {
       id: 3,
-      title: "Branding",
-      subtitle: "Design",
-      image: "/images/branding-work.jpg",
-      category: "branding"
+      title: "Neuroticure",
+      subtitle: "AI Therapist Platform",
+      image: "/our-works/mockup3.webp",
+      category: "healthcare",
+      link: "https://neuroticure.vercel.app/"
     },
     {
       id: 4,
-      title: "Past Work",
-      subtitle: "Various",
-      image: "/images/past-work.jpg",
-      category: "various"
+      title: "Clarygen",
+      subtitle: "IT & Financial Services",
+      image: "/our-works/mockup4.webp",
+      category: "business",
+      link: "https://clarygen.com/"
     }
   ];
+
+  const handleCardClick = (link) => {
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section className="selected-works bg-black text-white min-h-screen py-20 mx-8 mb-8 rounded-3xl">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-8">
-          <h2 className="text-white text-6xl md:text-8xl lg:text-9xl font-anton leading-none">
-            SELECTED<br />
-            WORK
+          <h2 className="text-white text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
+            <span ref={selectedTextRef} className="block">SELECTED</span>
+            <span ref={workTextRef} className="block">WORK</span>
           </h2>
           <div className="max-w-md">
-            <p className="text-white font-manrope text-sm font-light uppercase tracking-wide">
+            <p className="text-white text-sm font-light uppercase tracking-wide">
               IMPACTFUL SOLUTIONS THAT<br />
               STAND OUT,<br />
               CAPTURE ATTENTION,<br />
@@ -53,7 +99,7 @@ export default function SelectedWorks() {
 
         {/* Latest Work Label */}
         <div className="mb-8">
-          <p className="text-white font-manrope text-sm uppercase tracking-wider">
+          <p className="text-white text-sm uppercase tracking-wider">
             LATEST WORK
           </p>
         </div>
@@ -64,15 +110,34 @@ export default function SelectedWorks() {
             <div
               key={work.id}
               className="work-card group relative bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-all duration-300 cursor-pointer"
+              onClick={() => handleCardClick(work.link)}
             >
               {/* Image Container */}
               <div className="relative h-80 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
-                {/* Placeholder for actual images */}
-                <div className="w-full h-full flex items-center justify-center text-gray-600">
-                  <span className="text-sm font-manrope">
-                    {work.title} Preview
-                  </span>
+                {/* Card Image */}
+                <img 
+                  src={work.image} 
+                  alt={work.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                
+                {/* Dark overlay */}
+                <div className="absolute inset-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+                
+                {/* Arrow Icon */}
+                <div className="absolute top-4 right-4 w-6 h-6 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg className="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+
+                {/* Visit Site Capsule - Hover Effect (positioned lower) */}
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 translate-y-16 group-hover:translate-y-0 transition-transform duration-300 ease-out">
+                  <div className="bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+                    <span className="text-white text-sm font-medium">
+                      Visit Site
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -89,16 +154,22 @@ export default function SelectedWorks() {
                     )}
                   </div>
                   <div>
-                    <h3 className="text-white font-manrope font-medium text-lg">
+                    <h3 className="text-white font-medium text-lg">
                       {work.title}
                     </h3>
-                    <p className="text-gray-400 font-manrope text-sm">
+                    <p className="text-gray-400 text-sm">
                       {work.subtitle}
                     </p>
                   </div>
                 </div>
                 
-                <button className="text-white font-manrope text-sm uppercase tracking-wider hover:text-gray-300 transition-colors duration-200">
+                <button 
+                  className="text-white text-sm uppercase tracking-wider hover:text-gray-300 transition-colors duration-200"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCardClick(work.link);
+                  }}
+                >
                   EXPLORE
                 </button>
               </div>

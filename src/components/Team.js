@@ -1,13 +1,67 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 export default function Team() {
+  const ourTextRef = useRef(null);
+  const teamTextRef = useRef(null);
+  
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Create animation for "OUR" text coming from left
+    gsap.fromTo(ourTextRef.current, 
+      {
+        x: -200,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ourTextRef.current,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 1
+        }
+      }
+    );
+    
+    // Create animation for "TEAM" text coming from right
+    gsap.fromTo(teamTextRef.current,
+      {
+        x: 200,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: teamTextRef.current,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 1
+        }
+      }
+    );
+    
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
     <section className="team-section" style={{ backgroundColor: '#EFEEEC' }}>
       <div className="w-full mx-auto px-8 lg:px-50 py-20">
         {/* Team Header */}
         <div className="flex justify-between items-start mb-16">
           <h2 className="text-black text-8xl font-anton leading-none">
-            OUR<br />TEAM
+            <span ref={ourTextRef} className="block">OUR</span>
+            <span ref={teamTextRef} className="block">TEAM</span>
           </h2>
           <div className="text-right max-w-md">
             <p className="text-black font-manrope text-sm font-light uppercase tracking-wide leading-relaxed">
@@ -25,51 +79,42 @@ export default function Team() {
           <div className="group">
             <div className="w-full h-96 bg-gray-300 rounded-2xl mb-4 overflow-hidden">
               <img 
-                src="/team-member-1.jpg" 
-                alt="Nickolas Kossup"
+                src="/teams/daniyal.webp" 
+                alt="daniyal"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
             <h4 className="font-manrope text-xl font-semibold mb-2" style={{ color: '#222725' }}>
-              Nickolas Kossup
+              Daniyal Ahmed Gul
             </h4>
-            <p className="text-gray-600 font-manrope text-sm">
-              Creative Director & Founder
-            </p>
           </div>
 
           {/* Team Member 2 */}
           <div className="group">
             <div className="w-full h-96 bg-gray-300 rounded-2xl mb-4 overflow-hidden">
               <img 
-                src="/team-member-2.jpg" 
-                alt="Jane Designer"
+                src="/teams/seemab.jpg" 
+                alt="seemab"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
             <h4 className="font-manrope text-xl font-semibold mb-2" style={{ color: '#222725' }}>
-              Jane Designer
+              Seemab Anas
             </h4>
-            <p className="text-gray-600 font-manrope text-sm">
-              Senior UI/UX Designer
-            </p>
           </div>
 
           {/* Team Member 3 */}
           <div className="group">
             <div className="w-full h-96 bg-gray-300 rounded-2xl mb-4 overflow-hidden">
               <img 
-                src="/team-member-2.jpg" 
-                alt="Mike Developer"
+                src="/teams/saif.webp" 
+                alt="saif"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
             <h4 className="font-manrope text-xl font-semibold mb-2" style={{ color: '#222725' }}>
-              Mike Developer
+              Saif
             </h4>
-            <p className="text-gray-600 font-manrope text-sm">
-              Lead Developer
-            </p>
           </div>
         </div>
       </div>

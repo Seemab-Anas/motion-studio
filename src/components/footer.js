@@ -4,11 +4,9 @@ export default function Footer() {
   const navigationItems = [
     { id: '01', label: 'Home', href: '#' },
     { id: '02', label: 'About', href: '#about' },
-    { id: '03', label: 'Branding', href: '#branding' },
-    { id: '04', label: 'Web Design', href: '#web-design' },
-    { id: '05', label: 'Gaming', href: '#gaming' },
-    { id: '06', label: 'Past Work', href: '#past-work' },
-    { id: '07', label: 'Contact', href: '#contact' }
+    { id: '03', label: 'Services', href: '#services' },
+    { id: '04', label: 'Our Work', href: '#work' },
+    { id: '05', label: 'Contact', href: '#contact' }
   ];
 
   const scrollToTop = () => {
@@ -40,44 +38,55 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="relative z-10 px-8 pb-16">
+      <div className="relative z-10 px-4 sm:px-8 pb-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
             
             {/* Left Side - Contact Info */}
-            <div>
-              <h2 className="text-white font-manrope text-4xl lg:text-5xl leading-tight mb-4">
+            <div className="pr-0 lg:pr-8">
+              <h2 className="text-white font-manrope text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4">
                 Stay connected®<br />
-                nickolaskossup@gmail.com
+                <span className="text-lg sm:text-xl lg:text-2xl text-gray-300">motion.studioteams@gmail.com</span>
               </h2>
-              <p className="text-gray-400 font-manrope text-base mb-8 max-w-md">
-                Crafted with creativity and passion. Let's stay connected<br />
-                reach out anytime!
+              <p className="text-gray-400 font-manrope text-sm sm:text-base mb-8 max-w-md">
+                Crafted with creativity and passion.<br />
+                Let's stay connected, reach out anytime!
               </p>
               
               {/* Contact Button */}
-              <button className="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-manrope font-medium hover:bg-gray-100 transition-colors duration-200">
+              <a 
+                href="#contact"
+                className="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-manrope font-medium hover:bg-gray-100 transition-colors duration-200"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
                 Contact Now
-              </button>
+              </a>
             </div>
 
             {/* Right Side - Navigation */}
             <div>
-              <nav className="space-y-1">
+              <nav className="space-y-4">
                 {navigationItems.map((item) => (
                   <a
                     key={item.id}
                     href={item.href}
-                    className="group flex items-center justify-between py-4 border-b border-gray-800 hover:border-gray-600 transition-colors duration-200"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="group flex items-center justify-between py-3 border-b border-gray-800 hover:border-gray-600 transition-colors duration-200"
                   >
                     <span className="font-manrope text-lg text-white group-hover:text-gray-300 transition-colors">
                       {item.id} / {item.label}
                     </span>
                     <svg 
-                      className="w-5 h-5 text-white group-hover:text-gray-300 group-hover:translate-x-1 group-hover:translate-x-1 transition-all duration-200" 
+                      className="w-5 h-5 text-white group-hover:text-gray-300 group-hover:translate-x-1 transition-all duration-200" 
                       fill="none" 
                       stroke="currentColor" 
                       viewBox="0 0 24 24"
@@ -96,7 +105,7 @@ export default function Footer() {
       <div className="relative z-10 border-t border-gray-800 px-8 py-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <p className="text-gray-400 font-manrope text-sm">
-            Copyright © Nickolas Anthony Kossup 2025
+            Copyright © Motion Studio 2025
           </p>
           <button 
             onClick={scrollToTop}

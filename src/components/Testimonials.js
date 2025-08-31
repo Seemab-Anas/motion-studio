@@ -1,37 +1,85 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 export default function Testimonials() {
+  const industryTextRef = useRef(null);
+  const approvedTextRef = useRef(null);
+  
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Create animation for "INDUSTRY" text coming from left
+    gsap.fromTo(industryTextRef.current, 
+      {
+        x: -200,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: industryTextRef.current,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 1
+        }
+      }
+    );
+    
+    // Create animation for "APPROVED" text coming from right
+    gsap.fromTo(approvedTextRef.current,
+      {
+        x: 200,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: approvedTextRef.current,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 1
+        }
+      }
+    );
+    
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   const testimonials = [
     {
       id: 1,
-      name: "Alan Voong",
-      title: "Sr Full Stack Engineer",
-      company: "PlayStation",
-      avatar: "/images/alan-avatar.jpg", // Replace with actual avatar paths
-      rating: 5,
-      testimonial: "Nick's ability to innovate and deliver designs that impress regardless is a rare talent. Nick takes ownership in his projects. It was always a pleasure working with him."
+      name: "Rashid",
+      title: "CEO",
+      company: "NexDef International",
+      avatar: "/testimonials/nexdef.webp",
+      testimonial: "Motion Studio transformed our complex defense content into a crisp, authoritative website that balances technical depth with modern aesthetics. They understood the sensitivity of our work, structured our publications for easy discovery, and delivered a secure, professional experience on schedule. It was a pleasure collaborating with a team that truly owns the project."
     },
     {
       id: 2,
-      name: "Tina Sang",
-      title: "Marketing Manager",
-      company: "Lightspeed Studio",
-      avatar: "/images/tina-avatar.jpg",
-      rating: 5,
-      testimonial: "He's got a great taste that you can always count on, making designs that speak to the audience, whether it's for video games or editorial websites. It's great working w/ him!"
+      name: "Abu Bakar Badar",
+      title: "Founder",
+      company: "Neuroticure",
+      avatar: "/testimonials/neuroticure.webp",
+      testimonial: "Motion Studio created an appealing, feel-good design that brings Neuroticure's mission to life. The site highlights our AI-driven services with intuitive navigation and friendly visuals that make information easy to find and engage with on any device."
     },
     {
       id: 3,
-      name: "Carlos Estrada",
-      title: "Associate Creative Director",
-      company: "Apple",
-      avatar: "/images/carlos-avatar.jpg",
-      rating: 5,
-      testimonial: "Nick is an extremely talented designer with passion for days. His creative experience is super diverse which lends itself to a very strong leadership quality he posses."
+      name: "Simon Bennett",
+      title: "Director",
+      company: "Clarygen",
+      avatar: "/testimonials/clarygen.webp",
+      testimonial: "Motion Studio delivered a conversion-focused website for Clarygen and matched it with exceptional communication — they responded to every request, implemented our changes quickly, and continuously improved the site to meet our exact requirements. The collaboration was efficient, transparent, and results-driven."
     }
   ];
-
-
 
   return (
     <section className="testimonials bg-gray-100 py-20 px-8">
@@ -39,8 +87,8 @@ export default function Testimonials() {
         {/* Header */}
         <div className="flex justify-between items-start mb-16">
           <h2 className="text-black text-8xl font-anton leading-none">
-            INDUSTRY<br />
-            APPROVED
+            <span ref={industryTextRef} className="block">INDUSTRY</span>
+            <span ref={approvedTextRef} className="block">APPROVED</span>
           </h2>
           <div className="text-right max-w-md">
             <p className="text-black font-manrope text-sm font-light uppercase tracking-wide leading-relaxed">
@@ -59,29 +107,31 @@ export default function Testimonials() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="testimonial-card bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="testimonial-card bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full"
             >
-              {/* Avatar */}
-              <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-6 mx-auto">
-                {/* Placeholder for avatar - replace with actual images */}
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                  <span className="text-gray-600 text-sm font-manrope">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+              <div className="flex-grow">
+                {/* Avatar */}
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-100 mb-6 mx-auto">
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={testimonial.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
+
+                {/* Testimonial Text */}
+                <p className="text-gray-700 font-manrope text-base leading-relaxed mb-6 text-center">
+                  {testimonial.testimonial}
+                </p>
               </div>
 
-              {/* Testimonial Text */}
-              <p className="text-gray-700 font-manrope text-base leading-relaxed mb-6 text-center">
-                {testimonial.testimonial}
-              </p>
-
-              {/* Author Info */}
-              <div className="text-center">
-                <h4 className="text-black font-manrope font-semibold text-lg mb-1">
+              {/* Author Info - This will always be at the bottom */}
+              <div className="mt-auto pt-4 border-t border-gray-100">
+                <h4 className="text-black font-manrope font-semibold text-lg mb-1 text-center">
                   {testimonial.name}
                 </h4>
-                <p className="text-gray-500 font-manrope text-sm">
+                <p className="text-gray-500 font-manrope text-sm text-center">
                   {testimonial.company}
                 </p>
               </div>
