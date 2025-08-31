@@ -1,8 +1,8 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar.js";
 import { Manrope, Anton } from "next/font/google";
-import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/SmoothScroll";
+import Footer from "@/components/Footer.js";
+import SmoothScroll from "@/components/SmoothScroll.js";
 
 const manrope = Manrope({
   subsets: ["latin"],
